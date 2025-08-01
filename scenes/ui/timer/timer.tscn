@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7tf336lay8iv"]
+
+[ext_resource type="Script" uid="uid://c32alajiyte2u" path="res://scenes/ui/timer/timer.gd" id="1_vr8wr"]
+
+[node name="Timer" type="Node" groups=["timer"]]
+script = ExtResource("1_vr8wr")
