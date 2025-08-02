@@ -1,29 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx2ap5ec06nyg"]
+[gd_scene load_steps=8 format=3 uid="uid://cx2ap5ec06nyg"]
 
+[ext_resource type="Script" uid="uid://dgq1kdbkwjena" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dsr4gpljxalwj" path="res://scenes/player/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://blp2b1t4l28bk" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://c7tf336lay8iv" path="res://scenes/ui/timer/timer.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cgolai67qhh2x" path="res://scenes/ui/hud/hud.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cahjhjnypqden" path="res://scenes/goal/goal.tscn" id="4_lbhrr"]
-
-[sub_resource type="GDScript" id="GDScript_p57ef"]
-script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 distance = -109.0
 
 [node name="Game" type="Node2D"]
-script = SubResource("GDScript_p57ef")
+script = ExtResource("1_p57ef")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -34,6 +22,9 @@ anchor_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 1
 size_flags_horizontal = 4
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_iywne")]
+visible = false
 
 [node name="Timer" parent="." instance=ExtResource("3_lbhrr")]
 

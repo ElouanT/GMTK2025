@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://blp2b1t4l28bk"]
+
+[ext_resource type="Theme" uid="uid://dewy37x4x4k3q" path="res://assets/ui/theme.tres" id="1_kgchh"]
+[ext_resource type="Script" uid="uid://b1mqq2u4e0rc0" path="res://scenes/ui/pause_menu/pause_menu.gd" id="1_rbnsh"]
+[ext_resource type="Shader" uid="uid://c0x2hr15daxot" path="res://scenes/ui/pause_menu/pause_menu.gdshader" id="2_xgg5q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rv5mv"]
+shader = ExtResource("2_xgg5q")
+shader_parameter/amount = 2.0
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rbnsh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rv5mv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Return" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../MainMenu")
+theme = ExtResource("1_kgchh")
+text = "Return"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Return")
+theme = ExtResource("1_kgchh")
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

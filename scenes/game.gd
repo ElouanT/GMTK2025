@@ -1,0 +1,20 @@
+extends Node2D
+
+var paused = false
+
+func _ready() -> void:
+	Engine.time_scale = 1
+	
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		paused = !paused
+		
+		if paused:
+			$CanvasLayer/PauseMenu.show()
+			$CanvasLayer/PauseMenu/VBoxContainer/Return.grab_focus()
+			Engine.time_scale = 0
+		else:
+			$CanvasLayer/PauseMenu.hide()
+			Engine.time_scale = 1
+			
