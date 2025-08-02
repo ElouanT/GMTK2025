@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 400.0
 const JUMP_VELOCITY = -800.0
 #Variable pour gérer les aut muraux et ne pas rester coller contre le mur

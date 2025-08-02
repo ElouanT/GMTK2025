@@ -1,6 +1,7 @@
 extends Node2D
 
 var paused = false
+@export var level_start_pos : Node2D
 
 func _ready() -> void:
 	Engine.time_scale = 1

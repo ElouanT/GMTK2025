@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://2kter7rlxfel" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c44k06l15rc0e" path="res://assets/images/sprite player.png" id="2_dovo2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
+radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -14,4 +14,4 @@ scale = Vector2(0.133333, 0.133333)
 texture = ExtResource("2_dovo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_g2els")
+shape = SubResource("CircleShape2D_dovo2")
