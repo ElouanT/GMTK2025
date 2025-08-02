@@ -5,7 +5,7 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -800.0
 #Variable pour gérer les aut muraux et ne pas rester coller contre le mur
 var can_move := true
-
+var can_dash := true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -22,8 +22,11 @@ func _physics_process(delta: float) -> void:
 			can_move = true
 
 	var direction := Input.get_axis("left", "right")
-	if direction and can_move == true :
-		velocity.x = direction * SPEED
+	if direction and can_move :
+		if velocity.x > SPEED or velocity.x < -SPEED:
+			velocity.x = move_toward(velocity.x , direction * SPEED, 20)
+		else:
+			velocity.x = direction * SPEED
 	else:
 	# Inertie au sol et en l'air
 		if is_on_floor():
@@ -42,5 +45,16 @@ func _physics_process(delta: float) -> void:
 				velocity.x = -SPEED
 				can_move = false
 		
-		
+	#dash
+	var direction_updown = Input.get_axis("up", "down")
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dash(direction, direction_updown)
+	if is_on_floor():
+		can_dash = true
+
 	move_and_slide()
+
+func dash(direction, direction_updown):
+	velocity.x = 2.5 * direction * SPEED
+	velocity.y = 2.5 * direction_updown * SPEED
+	can_dash = false

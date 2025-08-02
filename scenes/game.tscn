@@ -386,13 +386,15 @@ visible = false
 [node name="Timer" parent="." instance=ExtResource("3_lbhrr")]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-550, 179)
+position = Vector2(-249, 169)
 collision_layer = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(249, -169)
+position_smoothing_enabled = true
 
 [node name="Goal" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(610, -284)
+position = Vector2(1522, 125)
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -5
