@@ -42,9 +42,20 @@ func _ready() -> void:
 		var msec = fmod(time, 1) * 1000
 		var sec = fmod(time, 60)
 		var time_string = "%02d : %03d" % [sec, msec]
-		get_node("LevelSelectionContainer/ScoreContainer/MarginContainer/VBoxContainer/ScoreLabel%d" % i).text = time_string
+		var label = get_node("LevelSelectionContainer/ScoreContainer/MarginContainer/VBoxContainer/ScoreLabel%d" % i)
+		label.text = time_string
+		var color = "ffffff"
+		if time == record:
+			color = "ecbf00"
+		label.set("theme_override_colors/font_color", color)
+			
 		data_send[i-1] = time
 		i += 1
+	
+	# Personal best
+	var msec = fmod(record, 1) * 1000
+	var sec = fmod(record, 60)
+	get_node("LevelSelectionContainer/ScoreContainer/MarginContainer/VBoxContainer/MarginContainer2/PBLabel").text = "PB : %02d : %03d" % [sec, msec]
 		
 	FirebaseLite.RealtimeDatabase.write("leaderboard/score", data_send)
 	
