@@ -19,6 +19,14 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1270
 window/size/viewport_height=720
+[autoload]
+
+SaveLoad="*res://scenes/save_load/save_load.gd"
+FirebaseLite="*res://addons/godot_firebase_lite/firebase.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_firebase_lite/plugin.cfg")
 
 [global_group]
 

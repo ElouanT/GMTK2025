@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	update_timer_label()
 
 func update_timer_label():
-	timer_label.text = timer.time_to_string()
+	timer_label.text = timer.get_time()
