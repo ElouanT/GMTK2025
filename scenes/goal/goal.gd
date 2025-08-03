@@ -15,6 +15,9 @@ func _on_body_entered(body: Node2D) -> void:
 				camera = child
 					
 		body.global_translate(Vector2(tp_zone.position.x-position.x, 0))
+		if body.current_trail:
+			body.current_trail.stop()
+			body.current_trail = null
 		camera.reset_smoothing()
 		
 		if body.can_score:		

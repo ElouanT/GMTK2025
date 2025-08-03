@@ -8,6 +8,8 @@ var can_dash := true
 var can_tp := true
 var can_score := false
 
+var current_trail: Trail
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -60,6 +62,11 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		can_dash = true
+	
+	if is_on_floor() || is_on_wall() || is_on_ceiling():
+		if current_trail:
+			current_trail.stop()
+			current_trail = null
 
 	move_and_slide()
 
@@ -72,5 +79,10 @@ func dash(direction, direction_updown):
 	else:
 		velocity.x = 2.5 * direction * SPEED
 		velocity.y = 2.7 * direction_updown * SPEED
+	
+	if current_trail:
+		current_trail.stop()
+	current_trail = Trail.create()
+	add_child(current_trail)
 
 	can_dash = false
