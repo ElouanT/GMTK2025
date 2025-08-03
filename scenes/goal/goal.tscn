@@ -12,6 +12,7 @@ collision_mask = 2
 script = ExtResource("1_r84s2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
 offset_left = -32.0
 offset_top = -6000.0
 offset_right = 448.0

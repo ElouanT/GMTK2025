@@ -435,6 +435,7 @@ scale = Vector2(10, 50)
 layer = -5
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
+z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
