@@ -23,7 +23,10 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction and can_move :
 		if velocity.x > SPEED or velocity.x < -SPEED:
-			velocity.x = move_toward(velocity.x , direction * SPEED, 20)
+			if is_on_floor():
+				velocity.x = move_toward(velocity.x, direction * SPEED, 20)
+			else:
+				velocity.x = move_toward(velocity.x, direction * SPEED, 15)
 		else:
 			velocity.x = direction * SPEED
 	else:
@@ -44,15 +47,12 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_pressed("right"):
 				velocity.x = -SPEED
 				can_move = false
-		
+
 	#dash
 	var direction_updown = Input.get_axis("up", "down")
-	if Input.is_action_just_pressed("dash") and can_dash and !(is_on_floor() || is_on_wall()):
+	if Input.is_action_just_pressed("dash") and can_dash and !is_on_wall():
 		dash(direction, direction_updown)
-	if  Input.is_action_just_pressed("dash") && Input.is_action_pressed("jump") && can_dash && !is_on_wall():
-		dash(direction, direction_updown)
-	if  Input.is_action_just_pressed("jump") && Input.is_action_pressed("dash") && can_dash:
-		dash(direction, direction_updown)
+
 	if is_on_floor():
 		can_dash = true
 
