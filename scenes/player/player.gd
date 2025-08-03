@@ -5,6 +5,8 @@ const JUMP_VELOCITY = -800.0
 #Variable pour gérer les sauts muraux et ne pas rester coller contre le mur
 var can_move := true
 var can_dash := true
+var can_tp := true
+var can_score := false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

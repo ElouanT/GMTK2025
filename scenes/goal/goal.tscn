@@ -4,20 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://dhoe7tvjgtlds" path="res://assets/images/goal.png" id="2_0ivff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
-size = Vector2(32, 229)
+size = Vector2(32, 32)
 
 [node name="Goal" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_r84s2")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, 98.5)
-scale = Vector2(1, 7.15625)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -32.0
+offset_top = -6000.0
+offset_right = 448.0
+offset_bottom = 44000.0
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_0ivff")
+stretch_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 98.5)
+position = Vector2(0, -700)
+scale = Vector2(1, 50)
 shape = SubResource("RectangleShape2D_iywne")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
