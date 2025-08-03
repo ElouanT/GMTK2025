@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://kedexq4u3ytk"]
+[gd_scene load_steps=6 format=3 uid="uid://kedexq4u3ytk"]
 
 [ext_resource type="Script" uid="uid://cst3ffrqovgcj" path="res://scenes/ui/main_menu/main_menu.gd" id="1_e8t4i"]
+[ext_resource type="Texture2D" uid="uid://cppitm8qu7wus" path="res://assets/images/Logo speedloop.png" id="2_cmwxi"]
 [ext_resource type="Theme" uid="uid://dewy37x4x4k3q" path="res://assets/ui/theme.tres" id="2_qt1dd"]
 [ext_resource type="Texture2D" uid="uid://bdd1gylthhdke" path="res://assets/images/Background 1080.png" id="3_qt1dd"]
 
@@ -34,27 +35,41 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = 120.0
+offset_left = -321.5
+offset_top = -260.0
+offset_right = 321.5
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Play" type="Button" parent="MainMenuContainer"]
+[node name="TextureRect" type="TextureRect" parent="MainMenuContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Quit")
+size_flags_vertical = 3
+texture = ExtResource("2_cmwxi")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Play" type="Button" parent="MainMenuContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+focus_neighbor_right = NodePath("../Quit")
 theme = ExtResource("2_qt1dd")
-text = "Play"
+text = "          Play          "
 script = SubResource("GDScript_l6cm7")
 
-[node name="Quit" type="Button" parent="MainMenuContainer"]
+[node name="Quit" type="Button" parent="MainMenuContainer/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Play")
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Play")
 theme = ExtResource("2_qt1dd")
-text = "Quit"
+text = "          Quit          "
 
 [node name="LevelSelectionContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -203,7 +218,7 @@ texture = ExtResource("3_qt1dd")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="MainMenuContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MainMenuContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenuContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenuContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="LevelSelectionContainer/LevelContainer/VBoxContainer/Run" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="LevelSelectionContainer/LevelContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

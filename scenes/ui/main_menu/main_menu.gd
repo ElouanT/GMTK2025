@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 
 func _ready() -> void:	
-	$MainMenuContainer/Play.grab_focus()
+	$MainMenuContainer/HBoxContainer/Play.grab_focus()
 	
 	#Leaderboard
 	FirebaseLite.initialize(firebaseConfig)
@@ -75,4 +75,4 @@ func _on_level_1_pressed() -> void:
 func _on_back_pressed() -> void:
 	$LevelSelectionContainer.visible = false
 	$MainMenuContainer.visible = true
-	$MainMenuContainer/Play.grab_focus()
+	$MainMenuContainer/HBoxContainer/Play.grab_focus()
