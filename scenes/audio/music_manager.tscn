@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cotc0jrhebh7r"]
+
+[ext_resource type="Script" uid="uid://cm0txf1dutbeb" path="res://scenes/audio/music_manager.gd" id="1_lycc5"]
+[ext_resource type="AudioStream" uid="uid://g6gfvg8ltggn" path="res://assets/audio/SpeedLoop.ogg" id="1_p7jqn"]
+
+[node name="Music" type="Node2D"]
+script = ExtResource("1_lycc5")
+loop_start = 29.53
+loop_end = 147.69
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_p7jqn")
+volume_db = -6.0

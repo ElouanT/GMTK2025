@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SaveLoad="*res://scenes/save_load/save_load.gd"
 FirebaseLite="*res://addons/godot_firebase_lite/firebase.tscn"
+MusicManager="*res://scenes/audio/music_manager.tscn"
 
 [display]
 
