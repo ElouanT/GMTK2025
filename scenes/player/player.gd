@@ -59,6 +59,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func dash(direction, direction_updown):
-	velocity.x = 2.5 * direction * SPEED
-	velocity.y = 2.5 * direction_updown * SPEED
+	if is_on_floor():
+		if direction < 0:
+			velocity.x = -2.5 * SPEED
+		else:
+			velocity.x = 2.5 * SPEED
+	else:
+		velocity.x = 2.5 * direction * SPEED
+		velocity.y = 2.7 * direction_updown * SPEED
+
 	can_dash = false
