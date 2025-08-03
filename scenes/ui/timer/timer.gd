@@ -13,8 +13,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if stopped:
 		return
-		
-	time += delta
+	
+	if time < 59.999:
+		time += delta
+	else:
+		time = 59.999
 	
 func start():
 	reset()

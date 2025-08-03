@@ -15,14 +15,15 @@ run/main_scene="uid://kedexq4u3ytk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/viewport_width=1270
-window/size/viewport_height=720
 [autoload]
 
 SaveLoad="*res://scenes/save_load/save_load.gd"
 FirebaseLite="*res://addons/godot_firebase_lite/firebase.tscn"
+
+[display]
+
+window/size/viewport_width=1270
+window/size/viewport_height=720
 
 [editor_plugins]
 

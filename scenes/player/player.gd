@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 400.0
 const JUMP_VELOCITY = -800.0
-#Variable pour gérer les aut muraux et ne pas rester coller contre le mur
+#Variable pour gérer les sauts muraux et ne pas rester coller contre le mur
 var can_move := true
 var can_dash := true
 
@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	# Wall jump
 	var opposite_direction := Input.get_axis("right", "left")
 	if Input.is_action_just_pressed("jump") and not is_on_floor() and is_on_wall():
+		can_dash = true
 		velocity.y = JUMP_VELOCITY
 		if Input.is_action_pressed("left"):
 				velocity.x = SPEED
@@ -46,7 +47,11 @@ func _physics_process(delta: float) -> void:
 		
 	#dash
 	var direction_updown = Input.get_axis("up", "down")
-	if Input.is_action_just_pressed("dash") and can_dash:
+	if Input.is_action_just_pressed("dash") and can_dash and !(is_on_floor() || is_on_wall()):
+		dash(direction, direction_updown)
+	if  Input.is_action_just_pressed("dash") && Input.is_action_pressed("jump") && can_dash && !is_on_wall():
+		dash(direction, direction_updown)
+	if  Input.is_action_just_pressed("jump") && Input.is_action_pressed("dash") && can_dash:
 		dash(direction, direction_updown)
 	if is_on_floor():
 		can_dash = true
