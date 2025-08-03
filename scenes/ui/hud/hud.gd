@@ -1,6 +1,7 @@
 extends Control
 
 @export var timer_label: Label
+@export var pb_label: Label
 
 var timer: Node
 
@@ -12,3 +13,4 @@ func _process(delta: float) -> void:
 
 func update_timer_label():
 	timer_label.text = timer.get_time()
+	pb_label.text = timer.pb_string

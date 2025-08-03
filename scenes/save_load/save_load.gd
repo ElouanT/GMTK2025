@@ -3,7 +3,7 @@ extends Node
 const save_location = "user://SaveFile.json"
 
 var content_to_save: Dictionary = {
-	record = 0.0
+	record = 59.999
 }
 
 func _save() -> void:

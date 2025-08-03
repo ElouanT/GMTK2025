@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dewy37x4x4k3q" path="res://assets/ui/theme.tres" id="1_0mwgc"]
 [ext_resource type="Script" uid="uid://04sqwtive854" path="res://scenes/ui/hud/hud.gd" id="1_hqnrr"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("timer_label")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("timer_label", "pb_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hqnrr")
 timer_label = NodePath("TimerLabel")
+pb_label = NodePath("PBLabel")
 
 [node name="TimerLabel" type="Label" parent="."]
 layout_mode = 1
@@ -25,3 +26,17 @@ offset_bottom = 39.0
 grow_horizontal = 0
 theme = ExtResource("1_0mwgc")
 text = "00:000"
+
+[node name="PBLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 49.0
+offset_right = -20.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme = ExtResource("1_0mwgc")
+theme_override_colors/font_color = Color(0.92549, 0.74902, 0, 1)
+text = "PB 00:000"

@@ -1,14 +1,20 @@
 extends Node
 
+@export var player: Node
+
 var time = 0.0
 var stopped = false
 
 var record = 0
 
+var pb_string = "PB 00 : 000"
+
 func _ready() -> void:
 	reset()
 	SaveLoad._load()
 	record = SaveLoad.content_to_save.record
+	
+	pb_string = str("PB - ", time_to_string(record))
 	
 func _process(delta: float) -> void:
 	if stopped:
@@ -21,6 +27,7 @@ func _process(delta: float) -> void:
 	
 func start():
 	reset()
+	player.can_score = false
 	stopped = false
 
 func stop():
@@ -31,6 +38,8 @@ func stop():
 		record = int(time * 1000) / 1000.0
 		SaveLoad.content_to_save.record = record
 		SaveLoad._save()
+		
+		pb_string = str("PB - ", time_to_string(record))
 		
 	
 func reset():

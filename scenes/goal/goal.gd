@@ -17,8 +17,9 @@ func _on_body_entered(body: Node2D) -> void:
 		body.global_translate(Vector2(tp_zone.position.x-position.x, 0))
 		camera.reset_smoothing()
 		
-	if body.can_score:		
-		timer.stop()
+		if body.can_score:		
+			timer.stop()
+			timer.start()
 
 
 func _on_body_exited(body: Node2D) -> void:
